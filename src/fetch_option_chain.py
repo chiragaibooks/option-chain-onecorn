@@ -45,10 +45,10 @@ def main() -> None:
         logger.error("No expiries found — aborting")
         sys.exit(1)
 
-    expiries = expiries[:4]
-    logger.info("Spot: %.2f  Expiries: %s", spot, expiries)
+    expiry = expiries[0]
+    logger.info("Spot: %.2f  Expiry: %s", spot, expiry)
 
-    df = fetch_option_chain("NIFTY50", None, spot)
+    df = fetch_option_chain("NIFTY50", expiry, spot)
     if df.empty:
         logger.error("Empty option chain — aborting")
         sys.exit(1)

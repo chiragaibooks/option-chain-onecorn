@@ -153,7 +153,7 @@ def _nse_session() -> requests.Session:
     return s
 
 
-def _fetch_live_option_chain(symbol: str, spot: float) -> pd.DataFrame:
+def _fetch_live_option_chain(symbol: str, spot: float, symbol_expiry: str = None) -> pd.DataFrame:
     """
     Fetch live NSE option chain via option-chain-v3 API (one call per expiry).
     Returns combined DataFrame for all expiries so caller can filter by expiry.
@@ -165,7 +165,8 @@ def _fetch_live_option_chain(symbol: str, spot: float) -> pd.DataFrame:
 
     # Get expiry list first
     try:
-        expiries = get_expiry_dates(symbol)[:4]
+        all_expiries = get_expiry_dates(symbol)
+        expiries = [symbol_expiry] if symbol_expiry else all_expiries[:1]
     except Exception:
         expiries = []
     if not expiries:
@@ -408,7 +409,7 @@ def fetch_option_chain(
     spot: float,
     trade_date: Optional[str] = None,
 ) -> pd.DataFrame:
-    df_live = _fetch_live_option_chain(symbol, spot)
+    df_live = _fetch_live_option_chain(symbol, spot, expiry)
     if not df_live.empty:
         df_exp = df_live[df_live["expiry"] == expiry].copy() if expiry else df_live.copy()
         if not df_exp.empty:
