@@ -341,6 +341,11 @@ def get_expiry_dates(symbol: str = "NIFTY50") -> List[str]:
         data     = derivatives.expiry_dates_option_index()
         expiries = data.get(nse_sym, [])
         if expiries:
+            today = date.today()
+            expiries = [
+                e for e in expiries
+                if datetime.strptime(e, "%d-%b-%Y").date() >= today
+            ]
             logger.info("[%s] nselib expiries: %s", symbol, expiries[:4])
             return expiries
     except Exception:
