@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS nifty50_option_chain (
 )
 """
 
-_MARKET_OPEN  = (9, 0)
+_MARKET_OPEN  = (9, 15)
 _MARKET_CLOSE = (15, 30)
 
 

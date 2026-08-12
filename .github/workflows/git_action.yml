@@ -2,7 +2,7 @@ name: Stock Data Cronjob
 
 on:
   schedule:
-    - cron: "30 3 * * 1-5"   # 03:30 UTC = 09:00 IST
+    - cron: "45 3 * * 1-5"   # 03:45 UTC = 09:15 IST
   workflow_dispatch:
 
 permissions:
@@ -81,8 +81,8 @@ jobs:
               if hm > 1530:
                   print(f"[{now.strftime('%H:%M IST')}] Market closed — exiting", flush=True)
                   break
-              if hm < 900:
-                  wait = (900 - hm) * 60 - now.second
+              if hm < 915:
+                  wait = (915 - hm) * 60 - now.second
                   print(f"[{now.strftime('%H:%M IST')}] Pre-market, sleeping {wait}s", flush=True)
                   time.sleep(wait)
                   continue
