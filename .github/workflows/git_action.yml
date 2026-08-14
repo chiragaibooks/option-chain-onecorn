@@ -2,7 +2,7 @@ name: Stock Data Cronjob
 
 on:
   schedule:
-    - cron: "0 3 * * 1-5"   # 03:00 UTC = 08:30 IST (early trigger to beat GitHub delay)
+    - cron: "30 0 * * 1-5"   # 00:30 UTC = 06:00 IST (early to beat GitHub scheduler delay)
   workflow_dispatch:
 
 permissions:
