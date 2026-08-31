@@ -1,8 +1,8 @@
-<!-- auto-updated: 31 Aug 2026 15:30:04 IST -->
+<!-- auto-updated: 31 Aug 2026 15:31:07 IST -->
 
 # 📋 NIFTY50 Option Chain — Last 10 Snapshots
 
-**Updated:** 31 Aug 2026 15:30:04 IST
+**Updated:** 31 Aug 2026 15:31:07 IST
 
 ---
 
